@@ -12,4 +12,4 @@ class Post(models.Model):
 
 
     def __str__(self):
-        return f'[{self.pk}번째 글] {self.title}'
+        return f'[{self.pk}]{self.title}'
