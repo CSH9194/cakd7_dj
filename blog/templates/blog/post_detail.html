@@ -5,82 +5,98 @@
 {% endblock %}
 
 {% block main_area %}
-<div class="container">        
-    <div class="row">
-        <!-- Blog entries-->
-        <div class="col-lg-8 mb-6 sm-3">
-            <!-- Featured blog post-->
-            <h2>{{post.title}}</a></h2>
-                {% if post.hook_text%}
-                    <h5 class='text-muted'>{{post.hook_text}}</h5>
-                {% endif%} 
-            <hr/>           
-            <h4>{{post.created_at}}</h4>              
-            <hr/>
-            <div class="card "> 
-                {% if post.head_image %}    
-                <img class="card-img-top" src="{{post.head_image.url}}" alt="image" /> 
-                {% else %}
-                <img class="card-img-top" src="http://picsum.photos/seed/{{post.id}}/600/400" alt="image" /> 
-                {% endif %}          
-                <div class="card-body">                                                       
-                    <p class = 'card-text'>{{post.content}}</p>
-                    {% if post.file_upload %}
-                        <a class="btn btn-secondary" href="{{post.file_upload.url}}" role="button" download>
-                            Download:
+<div class="container">  
+    <!-- Blog entries-->
+    <!-- Featured blog post-->
+    <h4>{{post.created_at}}</h4>              
+    <hr/>
+    <h2>{{post.title}}</a></h2>
+    <hr/> 
+        {% if post.hook_text%}
+            <h5 class='text-muted'>{{post.hook_text}}</h5>
+        {% endif%} 
+    <hr/>          
+    
+    <div class="card my-3"> 
+        {% if post.head_image %}    
+        <img class="card-img-top" src="{{post.head_image.url}}" alt="image" /> 
+        {% else %}
+        <img class="card-img-top" src="http://picsum.photos/seed/{{post.id}}/600/400" alt="image" /> 
+        {% endif %}          
+        <div class="card-body">                                                       
+            <p class = 'card-text'>{{post.content}}</p>
+            {% if post.file_upload %}
+                <a class="btn btn-secondary" href="{{post.file_upload.url}}" role="button" download>
+                    Download:
 
-                            {% if post.get_file_ext == 'csv'%}
-                                <i class='fas fa-file-csv'></i>
-                            {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls'%}
-                                <i class='fas fa-file-excel'></i>
-                            {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc'%}
-                                <i class='fas fa-file-word'></i>
-                            {% else %}
-                                <i class='fas fa-file'></i>
-                            {% endif%}
-                            {{post.get_file_name}}
-                        </a>
+                    {% if post.get_file_ext == 'csv'%}
+                        <i class='fas fa-file-csv'></i>
+                    {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls'%}
+                        <i class='fas fa-file-excel'></i>
+                    {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc'%}
+                        <i class='fas fa-file-word'></i>
+                    {% else %}
+                        <i class='fas fa-file'></i>
                     {% endif%}
-                </div>
-            </div>
+                    {{post.get_file_name}}
+                </a>
+            {% endif%}
         </div>
+    </div>  
+    <!-- Pagination-->
+    <nav aria-label="Pagination">
+        <hr class="my-0" />
+        <ul class="pagination justify-content-center my-4">
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+            <li class="page-item"><a class="page-link" href="#!">2</a></li>
+            <li class="page-item"><a class="page-link" href="#!">3</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+            <li class="page-item"><a class="page-link" href="#!">15</a></li>
+            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+        </ul>
+    </nav>
 
-        <!-- Side widgets-->
-        <div class="col-lg-4 mb-6 sm-3">
-            <!-- Search widget-->
-            <div class="card ">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
+    <!-- Comments section-->
+        <div class="card bg-light">
+            <div class="card-body">
+                <!-- Comment form-->
+                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                <!-- Comment with nested comments-->
+                <div class="d-flex mb-4">
+                    <!-- Parent comment-->
+                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                    <div class="ms-3">
+                        <div class="fw-bold">Commenter Name</div>
+                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                        <!-- Child comment 1-->
+                        <div class="d-flex mt-4">
+                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                            <div class="ms-3">
+                                <div class="fw-bold">Commenter Name</div>
+                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
+                        <!-- Child comment 2-->
+                        <div class="d-flex mt-4">
+                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                            <div class="ms-3">
+                                <div class="fw-bold">Commenter Name</div>
+                                When you put money directly to a problem, it makes a good headline.
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Single comment-->
+                <div class="d-flex">
+                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                    <div class="ms-3">
+                        <div class="fw-bold">Commenter Name</div>
+                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </div>   
 </div>
 {% endblock %}
 
