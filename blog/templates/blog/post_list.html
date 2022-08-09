@@ -5,14 +5,17 @@
             <!-- Blog entries-->   
                 <!-- Featured blog post-->
                 <div class="card my-3" >
+
                     <div class="card-header">
-                        <h4 class="card-text">{{p.created_at}}</h4>
+                        <h4 class="card-text">{{p.created_at}} / {{p.author | upper}}</h4>
                     </div>
+
                     {% if p.head_image %}
                         <a href="{{p.get_absolute_url}}"><img class="card-img-top" src="{{p.head_image.url}}" alt="Card image cap" /></a>
                     {% else %}
                         <a href="{{p.get_absolute_url}}"><img class="card-img-top" src="http://picsum.photos/seed/{{p.id}}/600/400" alt="Card image cap" /></a>
                     {% endif %}
+
                     <div class="card-body">
                         <h2 class="card-title">{{p.title}}</a></h2>
                         {% if p.hook_text%}
@@ -21,6 +24,7 @@
                         <p>{{p.content | truncatewords:40}}</p>
                         <a href="{{p.get_absolute_url}}" class="btn btn-primary">More</a>
                     </div>
+
                     <div class="card-footer">
                         <p>나중에 채울 요소</p>
                     </div>
