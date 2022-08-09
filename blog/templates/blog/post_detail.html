@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block main_area %}
-<div class="container">  
+<div class="container"> 
+    {% if post.category%}
+        <span class="badge badge-success float-right">{{post.category}}</span>
+    {% else %}
+        <span class="badge badge-success float-right">미분류</span>
+    {% endif %} 
     <!-- Blog entries-->
     <!-- Featured blog post-->
     <h4>{{post.created_at}} / {{post.author|upper}}</h4>              
     <hr/>
     <h2>{{post.title}}</a></h2>
+    
     <hr/> 
         {% if post.hook_text%}
             <h5 class='text-muted'>{{post.hook_text}}</h5>

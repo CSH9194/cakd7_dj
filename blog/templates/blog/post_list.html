@@ -4,7 +4,7 @@
 {% for p in post_list %}   
             <!-- Blog entries-->   
                 <!-- Featured blog post-->
-                <div class="card my-3" >
+                <div class="card my-3" id='post-{{p.pk}}'>
 
                     <div class="card-header">
                         <h4 class="card-text">{{p.created_at}} / {{p.author | upper}}</h4>
@@ -17,6 +17,11 @@
                     {% endif %}
 
                     <div class="card-body">
+                        {% if p.category%}
+                            <span class="badge badge-success float-right">{{p.category}}</span>
+                        {% else %}
+                            <span class="badge badge-success float-right">미분류</span>
+                        {% endif %}
                         <h2 class="card-title">{{p.title}}</a></h2>
                         {% if p.hook_text%}
                             <h5 class='text-muted'>{{p.hook_text}}</h5>
