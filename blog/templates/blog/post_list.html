@@ -1,6 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block main_area %}
+    <h1>{% if category %}<span class="badge badge-success">{{category}}</span>{% endif %}
+        {% if tag %}<span class='badge badge-light'><i class='fas fa-tags'></i>{{tag}}({{tag.post_set.count}})</span>{% endif %}
+    </h1>
 {% for p in post_list %}   
             <!-- Blog entries-->   
                 <!-- Featured blog post-->
@@ -27,6 +30,13 @@
                             <h5 class='text-muted'>{{p.hook_text}}</h5>
                         {% endif%}                                        
                         <p>{{p.content | truncatewords:40}}</p>
+                        {% if p.tags.exists %}
+                        <i class='fas fa-tags'></i>
+                        {% for tag in p.tags.iterator %}
+                            <a href='{{tag.get_absolute_url}}'><span class='badge badge-pill badge-light'>{{tag}}</span></a>
+                        {% endfor %}
+                        <br/>
+                        {% endif %}
                         <a href="{{p.get_absolute_url}}" class="btn btn-primary">More</a>
                     </div>
 
