@@ -4,18 +4,24 @@
     {{post.title}} - Blog
 {% endblock %}
 
+
+
 {% block main_area %}
 <div class="container"> 
-    {% if post.category%}
+    {% if post.category %}
         <span class="badge badge-success float-right">{{post.category}}</span>
     {% else %}
         <span class="badge badge-success float-right">미분류</span>
     {% endif %} 
     <!-- Blog entries-->
     <!-- Featured blog post-->
-    <h4>{{post.created_at}} / {{post.author|upper}}</h4>              
+    <h2 style='text-shadow: 0 0 6px white;'>{{post.title}}</h2>
+    <p class ='lead' > by <a href='#'> {{post.author|upper}}</a></p>
     <hr/>
-    <h2>{{post.title}}</a></h2>
+    {% if user.is_authenticated and user == post.author %}
+        <a class='btn btn-info btn-sm float-right' href='/blog/update_post/{{post.pk}}' role ='botton'><i class='fas fa-pen'></i> Edit Post</a>
+    {% endif %}
+    <h5 style='text-shadow: 0 0 6px white;'>{{post.created_at}}</h5>      
     
     <hr/> 
         {% if post.hook_text%}
