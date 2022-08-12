@@ -37,7 +37,7 @@
                         {% if p.hook_text%}
                             <h5 class='text-muted'>{{p.hook_text}}</h5>
                         {% endif%}                                        
-                        <p>{{p.content | truncatewords:40}}</p>
+                        <p>{{p.get_content_markdown | truncatewords_html:40 | safe }}</p>
                         {% if p.tags.exists %}
                         <i class='fas fa-tags'></i>
                         {% for tag in p.tags.iterator %}
