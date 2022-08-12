@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}
     {{post.title}} - Blog
@@ -82,11 +83,14 @@
         <div class="card">
             <div class="card-body">
                 <!-- Comment form-->
-                <form>
-                    <div class="form-group"><textarea class="form-control" rows="3" placeholder="댓글을 남겨보세요!!"></textarea>
-                    </div>
+                {% if user.is_authenticated %}
+                <form id='comment-form' method='POST' action='{{post.get_absolute_url}}new_comment/'>{% csrf_token %}
+                    <div class="form-group">{{comment_form | crispy }}</div>
                     <button type='submit' class='btn btn-primary'>Submit</button>    
                 </form>
+                {% else %}
+                    <a role='botton' class='btn btn-outline-dark btn-block btn-sm' href='#' data-toggle='modal' data-target='#loginModal'>로그인 후 댓글을 달아보세요!</a>
+                {% endif %}
             </div>
 
             <div>                
