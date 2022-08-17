@@ -4,6 +4,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    
 }
 
 section {
@@ -27,4 +28,9 @@ section {
     margin-bottom: 130px;
 }
 
-
+.maintext {
+    color: whitesmoke;
+    font-size: 2em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 0px 0px 8px black;
+}
