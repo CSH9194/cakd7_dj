@@ -1,0 +1,15 @@
+{% extends 'blog/base_full_width.html' %}
+{% load crispy_forms_tags %}
+
+    <title>{% block head_title %}Program{% endblock %}</title>
+
+    {% block body_title %}Program{% endblock %}
+
+{% block main_area %}
+    <h1>this is result</h1>
+    <br>
+    <hr>
+    <br>
+    <h3>당신의 BMI지수는 {{ans}} 입니다.</h3>
+
+{% endblock %}

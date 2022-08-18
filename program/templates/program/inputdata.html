@@ -1,0 +1,25 @@
+{% extends 'blog/base_full_width.html' %}
+{% load crispy_forms_tags %}
+
+    <title>{% block head_title %}Program{% endblock %}</title>
+
+    {% block body_title %}Program{% endblock %}
+
+{% block main_area %}
+    <h1>this is inputdata</h1>
+    <hr>
+
+
+    <h3>BMI지수 계산하기</h3>
+    <form action='result'>
+        <div>
+            <input class="form-control" type="text" placeholder="키를 입력하세요"  name = 'height'>
+            <input class="form-control" type="text" placeholder="체중을 입력하세요"  name = 'weight'>
+        </div>
+        <br/>
+    <button type='submit' class='btn btn-primary' href='program/result'>계산하기</button>
+    </form>
+
+        
+{% endblock %}
+
