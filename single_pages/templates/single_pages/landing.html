@@ -24,8 +24,9 @@
           </div>
           <div class="col-6 mt-4">
             <h2 class='text-light maintext'> Blog - New Posts</h2>
-            <div class='card mt-1'>
-            {% for post in recent_posts %}            
+            
+            {% for post in recent_posts %}    
+            <div class='card my-1'>        
               <div class='card-body'> 
                 <h6><a href='{{post.get_absolute_url}}' class='text-decoration-none text-dark'>{{post.title}}</a></h6>
                 <span class = 'badge badge-pill badge-light float-right'>
@@ -35,8 +36,8 @@
                   {{post.created_at}}
                 </span>
               </div>
-            {% endfor %}
-          </div>
+            </div>
+            {% endfor %}          
       </div>
     </div>
   
