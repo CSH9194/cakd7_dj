@@ -1,0 +1,31 @@
+{% extends 'blog/base_full_width.html' %}
+
+{% load crispy_forms_tags %}
+
+    <title>{% block head_title %}ml{% endblock %}</title>
+
+    {% block body_title %}ml{% endblock %}
+
+{% block main_area %}
+    <h1>this is inputdata</h1>
+    <hr>
+
+
+    <h3>타이타닉 생존 예측</h3>
+    <form action="{% url 'ml_result' %}"
+    >
+        <div>
+            fare_cat : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'fare_cat'>
+            age_cat : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'age_cat'>
+            family : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'family'>
+            sex_female : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'sex_female'>
+            sex_male : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'sex_male'>
+            embarked_C : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'embarked_C'>
+            embarked_Q : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'embarked_Q'>
+            embarked_S : <input class="form-control" type="text" placeholder="0 or 1 입력"  name = 'embarked_S'>
+        </div>
+        <br/>
+    <button type='submit' class='btn btn-primary'>계산하기</button>
+    </form>
+        
+{% endblock %}

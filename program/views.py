@@ -25,10 +25,23 @@ def result(request):
     a = int(request.GET['height'])
     b = int(request.GET['weight'])
 
-    ans = b/((a/100)**2) 
+    ans = round(b/((a/100)**2), 2)
+
+    if ans >= 40:
+        result = '초고도비만'
+    elif ans >=30:
+        result = '고도비만'
+    elif ans >=25:
+        result = '경도비만'
+    elif ans >=23:
+        result = '과체중'
+    elif ans >=18.5:
+        result = '정상체중'
+    else:
+        result = '저체중'
 
     return render(
         request,
         'program/result.html',
-        {'ans':ans, }
+        {'ans':ans, 'result':result}
     )
